@@ -7,25 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Brindar.DAL
+namespace Brindar.Logica.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Servicios
+    public partial class Suscripciones
     {
-        public Servicios()
-        {
-            this.Eventos = new HashSet<Eventos>();
-        }
-    
-        public int IdServicio { get; set; }
+        public int IdSuscripcion { get; set; }
         public int Proveedor { get; set; }
-        public int Categoria { get; set; }
-        public double Precio { get; set; }
+        public System.DateTime FechaInicio { get; set; }
+        public int CantMeses { get; set; }
+        public double PrecioMensual { get; set; }
     
-        public virtual Categorias Categorias { get; set; }
-        public virtual ICollection<Eventos> Eventos { get; set; }
         public virtual Proveedores Proveedores { get; set; }
     }
 }

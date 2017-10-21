@@ -7,19 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Brindar.DAL
+namespace Brindar.Logica.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Suscripciones
+    public partial class Salones
     {
-        public int IdSuscripcion { get; set; }
+        public int IdSalon { get; set; }
         public int Proveedor { get; set; }
-        public System.DateTime FechaInicio { get; set; }
-        public int CantMeses { get; set; }
-        public double PrecioMensual { get; set; }
+        public string Nombre { get; set; }
+        public double Precio { get; set; }
+        public string Telefono { get; set; }
+        public int Localidad { get; set; }
+        public string Direccion { get; set; }
+        public string URLFacebook { get; set; }
+        public string URLPagina { get; set; }
     
+        public virtual Localidades Localidades { get; set; }
         public virtual Proveedores Proveedores { get; set; }
     }
 }

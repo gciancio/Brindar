@@ -7,21 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Brindar.DAL
+namespace Brindar.Logica.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Categorias
+    public partial class TiposEvento
     {
-        public Categorias()
+        public TiposEvento()
         {
-            this.Servicios = new HashSet<Servicios>();
+            this.Eventos = new HashSet<Eventos>();
         }
     
-        public int IdCategoria { get; set; }
+        public int IdTipoEvento { get; set; }
         public string Descripcion { get; set; }
     
-        public virtual ICollection<Servicios> Servicios { get; set; }
+        public virtual ICollection<Eventos> Eventos { get; set; }
     }
 }

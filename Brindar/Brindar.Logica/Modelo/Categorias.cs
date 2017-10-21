@@ -7,25 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Brindar.DAL
+namespace Brindar.Logica.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Localidades
+    public partial class Categorias
     {
-        public Localidades()
+        public Categorias()
         {
-            this.Proveedores = new HashSet<Proveedores>();
-            this.Salones = new HashSet<Salones>();
+            this.Servicios = new HashSet<Servicios>();
         }
     
-        public int IdLocalidad { get; set; }
+        public int IdCategoria { get; set; }
         public string Descripcion { get; set; }
-        public int IdProvincia { get; set; }
     
-        public virtual ICollection<Proveedores> Proveedores { get; set; }
-        public virtual Provincias Provincias { get; set; }
-        public virtual ICollection<Salones> Salones { get; set; }
+        public virtual ICollection<Servicios> Servicios { get; set; }
     }
 }
