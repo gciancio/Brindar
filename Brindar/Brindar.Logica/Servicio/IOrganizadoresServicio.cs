@@ -9,13 +9,11 @@ namespace Brindar.Logica.Servicio
 {
     public interface IOrganizadoresServicio
     {
-        //Registro usuario
+        //Registro organizador
         public void RegistrarOrganizador(Organizadores o);
         //Saber si el organizador/proveedor ya está registrado
         public bool ExisteMailRegistrado(string Email);
         //Validar login
-        public bool ValidarLogin(String Email, String Password);
-		//Trae lista de eventos por organizador
-        public List<Eventos> TraerEventosOrganizador(int IdOrganizador);
+        public Organizadores ValidarLogin(string Email, string Password);
     }
 }

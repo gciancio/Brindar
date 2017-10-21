@@ -9,7 +9,7 @@ namespace Brindar.Logica.Servicio
 {
     public interface IProveedoresServicio
     {
-        //Registro usuario
+        //Registro proveedor
 	    public void RegistrarProveedor(Proveedores p);
 	    //Activar/desactivar premium
 	    public void UsuarioPremium(int IdProveedor, bool Premium);

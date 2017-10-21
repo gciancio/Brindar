@@ -15,6 +15,12 @@ namespace Brindar.Logica.Servicio
         public void EditarEvento(int IdEvento, Eventos s);
         //Borrar un evento
         public void BorrarEvento(int IdEvento);
+        //Trae evento por ID
+        public Eventos TraerEvento(int? IdEvento);
+        //Borrar un servicio de un evento
+        public void BorrarServicioDeEvento(int IdEvento, int IdServicio);
+        //Trae lista de eventos por organizador
+        public List<Eventos> TraerEventosOrganizador(int IdOrganizador);
         
         //public void AsignarProveedores(EventoProveedores ProvAsignado);
     }

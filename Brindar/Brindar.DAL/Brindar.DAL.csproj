@@ -52,47 +52,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BrindarDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="BrindarDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="BrindarDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BrindarDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Categorias.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Eventos.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Localidades.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Organizadores.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proveedores.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Provincias.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Salones.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Servicios.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Suscripciones.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TiposEvento.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Repositorio\OrganizadoresDALImple.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="BrindarDB.edmx">
@@ -110,18 +76,16 @@
     <None Include="BrindarDB.edmx.diagram">
       <DependentUpon>BrindarDB.edmx</DependentUpon>
     </None>
-    <None Include="BrindarDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BrindarDB.edmx</DependentUpon>
-      <LastGenOutput>BrindarDB.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repositorio\" />
+    <ProjectReference Include="..\Brindar.Logica\Brindar.Logica.csproj">
+      <Project>{0e45b9dc-af26-4e15-9fab-ae9fa5738293}</Project>
+      <Name>Brindar.Logica</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

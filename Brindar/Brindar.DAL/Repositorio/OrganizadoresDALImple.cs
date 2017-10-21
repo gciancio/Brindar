@@ -12,7 +12,7 @@ namespace Brindar.DAL.Repositorio
     {
         BrindarEntities ctx = new BrindarEntities();
 
-        //Registro usuario
+        //Registro organizador
         public void RegistrarOrganizador(Organizadores o)
         {
             ctx.Organizadores.Add(o);
@@ -22,7 +22,8 @@ namespace Brindar.DAL.Repositorio
         //Saber si el organizador/proveedor ya está registrado
         public bool ExisteMailRegistrado(string Email)
         {
-            int existe = (from org in ctx.Organizadores where org.Email == Email select org).Count();
+            int existe = ctx.Organizadores.Where(o => o.Email == Email).Count();
+
             if (existe > 0)
             {
                 return true;
@@ -34,21 +35,10 @@ namespace Brindar.DAL.Repositorio
         }
 
         //Validar login
-        public bool ValidarLogin(String Email, String Password)
+        public Organizadores ValidarLogin(string Email, string Password)
         {
-            int existe = (from org in ctx.Organizadores where org.Email == Email select org).Count();
-
-            if (existe > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            var existe = ctx.Organizadores.Where(o => o.Email == Email && o.Contraseña = Password).FirstOrDefault();
+            return existe;
         }
-        
-        //Trae lista de eventos por organizador
-        public List<Eventos> TraerEventosOrganizador(int IdOrganizador);
     }
 }

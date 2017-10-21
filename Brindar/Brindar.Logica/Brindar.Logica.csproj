@@ -30,8 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,11 +45,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Servicio\ICategoriasServicio.cs" />
+    <Compile Include="Servicio\IEventosServicio.cs" />
+    <Compile Include="Servicio\ILocalidadesServicio.cs" />
+    <Compile Include="Servicio\IOrganizadoresServicio.cs" />
+    <Compile Include="Servicio\IProveedoresServicio.cs" />
+    <Compile Include="Servicio\IProvinciasServicio.cs" />
+    <Compile Include="Servicio\ISalonesServicio.cs" />
+    <Compile Include="Servicio\IServiciosServicio.cs" />
+    <Compile Include="Servicio\ISuscripcionesServicio.cs" />
+    <Compile Include="Servicio\ITiposEventoServicio.cs" />
+    <Compile Include="Modelo\BrindarDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Categorias.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Eventos.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Localidades.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Organizadores.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Proveedores.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Provincias.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Salones.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Servicios.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Suscripciones.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\TiposEvento.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Modelo\" />
+    <None Include="App.config" />
+    <None Include="Modelo\BrindarDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BrindarDB.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
