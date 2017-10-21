@@ -1,0 +1,9 @@
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.Logica\obj\Debug\Brindar.Logica.csprojResolveAssemblyReference.cache
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.Logica\bin\Debug\Brindar.Logica.dll.config
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.Logica\bin\Debug\Brindar.Logica.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.Logica\bin\Debug\Brindar.Logica.pdb
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.Logica\bin\Debug\EntityFramework.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.Logica\bin\Debug\EntityFramework.xml
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.Logica\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.Logica\obj\Debug\Brindar.Logica.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.Logica\obj\Debug\Brindar.Logica.pdb

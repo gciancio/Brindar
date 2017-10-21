@@ -12,6 +12,7 @@ namespace Brindar.DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using Brindar.Logica.Modelo;
     
     public partial class BrindarEntities : DbContext
     {

@@ -10,6 +10,6 @@ namespace Brindar.Logica.Servicio
     public interface ICategoriasServicio
     {
         //Traer lista de categorías
-        public List<Categorias> TraerCategorias();
+        List<Categorias> TraerCategorias();
     }
 }

@@ -35,10 +35,15 @@ namespace Brindar.DAL.Repositorio
         }
 
         //Validar login
-        public Organizadores ValidarLogin(string Email, string Password)
+        public bool ValidarLogin(Organizadores o)
         {
-            var existe = ctx.Organizadores.Where(o => o.Email == Email && o.Contraseña = Password).FirstOrDefault();
-            return existe;
+            var organizador = ctx.Organizadores.Where(org => org.Email == o.Email && org.Contraseña == o.Contraseña).ToList();
+            if (organizador.Count() == 0 || organizador.Count() > 1)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

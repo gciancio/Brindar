@@ -1,0 +1,11 @@
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\obj\Debug\Brindar.DAL.csprojResolveAssemblyReference.cache
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\bin\Debug\Brindar.DAL.dll.config
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\bin\Debug\Brindar.DAL.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\bin\Debug\Brindar.DAL.pdb
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\bin\Debug\Brindar.Logica.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\bin\Debug\EntityFramework.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\bin\Debug\Brindar.Logica.pdb
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\bin\Debug\EntityFramework.xml
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\obj\Debug\Brindar.DAL.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar.DAL\obj\Debug\Brindar.DAL.pdb

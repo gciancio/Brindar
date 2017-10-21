@@ -10,9 +10,9 @@ namespace Brindar.Logica.Servicio
     public interface ISuscripcionesServicio
     {
         //Registrar una suscripcion
-        public void RegistrarSuscripcion(Suscripciones s);
+        void RegistrarSuscripcion(Suscripciones s);
 
         //Traer suscripciones por proveedor
-        public List<Suscripciones> TraerSuscripcionesPorProveedor(int IdProveedor);
+        List<Suscripciones> TraerSuscripcionesPorProveedor(int IdProveedor);
     }
 }

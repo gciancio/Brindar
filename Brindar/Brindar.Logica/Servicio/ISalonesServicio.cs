@@ -10,16 +10,16 @@ namespace Brindar.Logica.Servicio
     public interface ISalonesServicio
     {
         //Registrar un salon
-        public void RegistrarSalon(Salones s);
+        void RegistrarSalon(Salones s);
         //Editar un salon
-        public void EditarSalon(int IdSalon, Salones s);
+        void EditarSalon(int IdSalon, Salones s);
         //Borrar un salon
-        public void BorrarSalon(int IdSalon);
+        void BorrarSalon(int IdSalon);
         //Trae lista de todos los salones disponibles
-        public List<Salones> TraerSalones();
+        List<Salones> TraerSalones();
         //Trae lista de salones por id de localidad
-        public List<Salones> TraerSalonesPorLocalidad(int IdLocalidad);
+        List<Salones> TraerSalonesPorLocalidad(int IdLocalidad);
         //Trae salón por id del proveedor
-        public Salones TraerSalonPorProveedor(int IdProveedor);
+        Salones TraerSalonPorProveedor(int IdProveedor);
     }
 }

@@ -47,7 +47,7 @@ namespace Brindar.DAL.Repositorio
         //Borrar un servicio de un evento
         public void BorrarServicioDeEvento(int IdEvento, int IdServicio)
         {
-            var ser = ctx.Eventos.Where(e => e.IdEvento == IdEvento && e.IdServicio == IdServicio).First();
+            var ser = ctx.Eventos.Where(e => e.IdEvento == IdEvento && e.Servicio == IdServicio).First();
             ctx.Eventos.Remove(ser);
             ctx.SaveChanges();
         }

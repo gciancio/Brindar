@@ -58,7 +58,16 @@
       <DependentUpon>BrindarDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\CategoriasDALImple.cs" />
+    <Compile Include="Repositorio\EventosDALImple.cs" />
+    <Compile Include="Repositorio\LocalidadesDALImple.cs" />
     <Compile Include="Repositorio\OrganizadoresDALImple.cs" />
+    <Compile Include="Repositorio\ProveedoresDALImple.cs" />
+    <Compile Include="Repositorio\ProvinciasDALImple.cs" />
+    <Compile Include="Repositorio\SalonesDALImple.cs" />
+    <Compile Include="Repositorio\ServiciosDALImple.cs" />
+    <Compile Include="Repositorio\SuscripcionesDALImple.cs" />
+    <Compile Include="Repositorio\TiposEventoDALImple.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="BrindarDB.edmx">

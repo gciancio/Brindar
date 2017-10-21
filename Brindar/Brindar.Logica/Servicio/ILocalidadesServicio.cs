@@ -10,6 +10,6 @@ namespace Brindar.Logica.Servicio
     public interface ILocalidadesServicio
     {
         //Traer lista de localidades
-        public List<Localidades> TraerLocalidades();
+        List<Localidades> TraerLocalidades();
     }
 }

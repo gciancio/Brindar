@@ -10,6 +10,6 @@ namespace Brindar.Logica.Servicio
     public interface ITiposEventoServicio
     {
         //Trae lista de tipos de eventos
-        public List<TiposEvento> TraerTiposEvento();
+        List<TiposEvento> TraerTiposEvento();
     }
 }

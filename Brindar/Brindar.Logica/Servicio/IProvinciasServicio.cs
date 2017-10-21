@@ -10,6 +10,6 @@ namespace Brindar.Logica.Servicio
     public interface IProvinciasServicio
     {
         //Traer lista de provincias
-        public List<Provincias> TraerProvincias();
+        List<Provincias> TraerProvincias();
     }
 }

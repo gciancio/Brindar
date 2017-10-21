@@ -89,3 +89,7 @@ C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\zh-Hant\System.S
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\obj\Debug\Brindar.csprojResolveAssemblyReference.cache
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\obj\Debug\Brindar.dll
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\obj\Debug\Brindar.pdb
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.DAL.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.Logica.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.DAL.pdb
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.Logica.pdb

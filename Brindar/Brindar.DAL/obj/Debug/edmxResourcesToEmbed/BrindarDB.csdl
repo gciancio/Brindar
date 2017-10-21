@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BrindarModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BrindarEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Categorias" EntityType="BrindarModel.Categorias" />
+    <EntitySet Name="Eventos" EntityType="BrindarModel.Eventos" />
+    <EntitySet Name="Localidades" EntityType="BrindarModel.Localidades" />
+    <EntitySet Name="Organizadores" EntityType="BrindarModel.Organizadores" />
+    <EntitySet Name="Proveedores" EntityType="BrindarModel.Proveedores" />
+    <EntitySet Name="Provincias" EntityType="BrindarModel.Provincias" />
+    <EntitySet Name="Salones" EntityType="BrindarModel.Salones" />
+    <EntitySet Name="Servicios" EntityType="BrindarModel.Servicios" />
+    <EntitySet Name="Suscripciones" EntityType="BrindarModel.Suscripciones" />
+    <EntitySet Name="TiposEvento" EntityType="BrindarModel.TiposEvento" />
+    <AssociationSet Name="FK_categoria" Association="BrindarModel.FK_categoria">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Servicios" EntitySet="Servicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_organizador" Association="BrindarModel.FK_organizador">
+      <End Role="Organizadores" EntitySet="Organizadores" />
+      <End Role="Eventos" EntitySet="Eventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_salon" Association="BrindarModel.FK_salon">
+      <End Role="Servicios" EntitySet="Servicios" />
+      <End Role="Eventos" EntitySet="Eventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tipoEvento" Association="BrindarModel.FK_tipoEvento">
+      <End Role="TiposEvento" EntitySet="TiposEvento" />
+      <End Role="Eventos" EntitySet="Eventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_localidad" Association="BrindarModel.FK_localidad">
+      <End Role="Localidades" EntitySet="Localidades" />
+      <End Role="Proveedores" EntitySet="Proveedores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_provincia" Association="BrindarModel.FK_provincia">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Localidades" EntitySet="Localidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_salon_localidad" Association="BrindarModel.FK_salon_localidad">
+      <End Role="Localidades" EntitySet="Localidades" />
+      <End Role="Salones" EntitySet="Salones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_proveedor" Association="BrindarModel.FK_proveedor">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Salones" EntitySet="Salones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_servicio_proveedor" Association="BrindarModel.FK_servicio_proveedor">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Servicios" EntitySet="Servicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_suscripcion_proveedor" Association="BrindarModel.FK_suscripcion_proveedor">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Suscripciones" EntitySet="Suscripciones" />
+    </AssociationSet>
+    <AssociationSet Name="EventoProveedores" Association="BrindarModel.EventoProveedores">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="Proveedores" EntitySet="Proveedores" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Servicios" Relationship="BrindarModel.FK_categoria" FromRole="Categorias" ToRole="Servicios" />
+  </EntityType>
+  <EntityType Name="Eventos">
+    <Key>
+      <PropertyRef Name="IdEvento" />
+    </Key>
+    <Property Name="IdEvento" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoEvento" Type="Int32" Nullable="false" />
+    <Property Name="Organizador" Type="Int32" Nullable="false" />
+    <Property Name="Salon" Type="Int32" />
+    <Property Name="Servicio" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Presupuesto" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Organizadores" Relationship="BrindarModel.FK_organizador" FromRole="Eventos" ToRole="Organizadores" />
+    <NavigationProperty Name="Servicios" Relationship="BrindarModel.FK_salon" FromRole="Eventos" ToRole="Servicios" />
+    <NavigationProperty Name="TiposEvento" Relationship="BrindarModel.FK_tipoEvento" FromRole="Eventos" ToRole="TiposEvento" />
+    <NavigationProperty Name="Proveedores" Relationship="BrindarModel.EventoProveedores" FromRole="Eventos" ToRole="Proveedores" />
+  </EntityType>
+  <EntityType Name="Localidades">
+    <Key>
+      <PropertyRef Name="IdLocalidad" />
+    </Key>
+    <Property Name="IdLocalidad" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IdProvincia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Proveedores" Relationship="BrindarModel.FK_localidad" FromRole="Localidades" ToRole="Proveedores" />
+    <NavigationProperty Name="Provincias" Relationship="BrindarModel.FK_provincia" FromRole="Localidades" ToRole="Provincias" />
+    <NavigationProperty Name="Salones" Relationship="BrindarModel.FK_salon_localidad" FromRole="Localidades" ToRole="Salones" />
+  </EntityType>
+  <EntityType Name="Organizadores">
+    <Key>
+      <PropertyRef Name="IdOrganizador" />
+    </Key>
+    <Property Name="IdOrganizador" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Contraseña" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Eventos" Relationship="BrindarModel.FK_organizador" FromRole="Organizadores" ToRole="Eventos" />
+  </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="IdProveedor" />
+    </Key>
+    <Property Name="IdProveedor" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Contraseña" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Localidad" Type="Int32" Nullable="false" />
+    <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="URLFacebook" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="URLPagina" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Premium" Type="Boolean" />
+    <NavigationProperty Name="Localidades" Relationship="BrindarModel.FK_localidad" FromRole="Proveedores" ToRole="Localidades" />
+    <NavigationProperty Name="Salones" Relationship="BrindarModel.FK_proveedor" FromRole="Proveedores" ToRole="Salones" />
+    <NavigationProperty Name="Servicios" Relationship="BrindarModel.FK_servicio_proveedor" FromRole="Proveedores" ToRole="Servicios" />
+    <NavigationProperty Name="Suscripciones" Relationship="BrindarModel.FK_suscripcion_proveedor" FromRole="Proveedores" ToRole="Suscripciones" />
+    <NavigationProperty Name="Eventos" Relationship="BrindarModel.EventoProveedores" FromRole="Proveedores" ToRole="Eventos" />
+  </EntityType>
+  <EntityType Name="Provincias">
+    <Key>
+      <PropertyRef Name="IdProvincia" />
+    </Key>
+    <Property Name="IdProvincia" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Localidades" Relationship="BrindarModel.FK_provincia" FromRole="Provincias" ToRole="Localidades" />
+  </EntityType>
+  <EntityType Name="Salones">
+    <Key>
+      <PropertyRef Name="IdSalon" />
+    </Key>
+    <Property Name="IdSalon" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Proveedor" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Precio" Type="Double" Nullable="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Localidad" Type="Int32" Nullable="false" />
+    <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="URLFacebook" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="URLPagina" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Localidades" Relationship="BrindarModel.FK_salon_localidad" FromRole="Salones" ToRole="Localidades" />
+    <NavigationProperty Name="Proveedores" Relationship="BrindarModel.FK_proveedor" FromRole="Salones" ToRole="Proveedores" />
+  </EntityType>
+  <EntityType Name="Servicios">
+    <Key>
+      <PropertyRef Name="IdServicio" />
+    </Key>
+    <Property Name="IdServicio" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Proveedor" Type="Int32" Nullable="false" />
+    <Property Name="Categoria" Type="Int32" Nullable="false" />
+    <Property Name="Precio" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Categorias" Relationship="BrindarModel.FK_categoria" FromRole="Servicios" ToRole="Categorias" />
+    <NavigationProperty Name="Eventos" Relationship="BrindarModel.FK_salon" FromRole="Servicios" ToRole="Eventos" />
+    <NavigationProperty Name="Proveedores" Relationship="BrindarModel.FK_servicio_proveedor" FromRole="Servicios" ToRole="Proveedores" />
+  </EntityType>
+  <EntityType Name="Suscripciones">
+    <Key>
+      <PropertyRef Name="IdSuscripcion" />
+    </Key>
+    <Property Name="IdSuscripcion" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Proveedor" Type="Int32" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CantMeses" Type="Int32" Nullable="false" />
+    <Property Name="PrecioMensual" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Proveedores" Relationship="BrindarModel.FK_suscripcion_proveedor" FromRole="Suscripciones" ToRole="Proveedores" />
+  </EntityType>
+  <EntityType Name="TiposEvento">
+    <Key>
+      <PropertyRef Name="IdTipoEvento" />
+    </Key>
+    <Property Name="IdTipoEvento" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Eventos" Relationship="BrindarModel.FK_tipoEvento" FromRole="TiposEvento" ToRole="Eventos" />
+  </EntityType>
+  <Association Name="FK_categoria">
+    <End Role="Categorias" Type="BrindarModel.Categorias" Multiplicity="1" />
+    <End Role="Servicios" Type="BrindarModel.Servicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Servicios">
+        <PropertyRef Name="Categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_organizador">
+    <End Role="Organizadores" Type="BrindarModel.Organizadores" Multiplicity="1" />
+    <End Role="Eventos" Type="BrindarModel.Eventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizadores">
+        <PropertyRef Name="IdOrganizador" />
+      </Principal>
+      <Dependent Role="Eventos">
+        <PropertyRef Name="Organizador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_salon">
+    <End Role="Servicios" Type="BrindarModel.Servicios" Multiplicity="0..1" />
+    <End Role="Eventos" Type="BrindarModel.Eventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicios">
+        <PropertyRef Name="IdServicio" />
+      </Principal>
+      <Dependent Role="Eventos">
+        <PropertyRef Name="Servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tipoEvento">
+    <End Role="TiposEvento" Type="BrindarModel.TiposEvento" Multiplicity="1" />
+    <End Role="Eventos" Type="BrindarModel.Eventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposEvento">
+        <PropertyRef Name="IdTipoEvento" />
+      </Principal>
+      <Dependent Role="Eventos">
+        <PropertyRef Name="TipoEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_localidad">
+    <End Role="Localidades" Type="BrindarModel.Localidades" Multiplicity="1" />
+    <End Role="Proveedores" Type="BrindarModel.Proveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Localidades">
+        <PropertyRef Name="IdLocalidad" />
+      </Principal>
+      <Dependent Role="Proveedores">
+        <PropertyRef Name="Localidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_provincia">
+    <End Role="Provincias" Type="BrindarModel.Provincias" Multiplicity="1" />
+    <End Role="Localidades" Type="BrindarModel.Localidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="IdProvincia" />
+      </Principal>
+      <Dependent Role="Localidades">
+        <PropertyRef Name="IdProvincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_salon_localidad">
+    <End Role="Localidades" Type="BrindarModel.Localidades" Multiplicity="1" />
+    <End Role="Salones" Type="BrindarModel.Salones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Localidades">
+        <PropertyRef Name="IdLocalidad" />
+      </Principal>
+      <Dependent Role="Salones">
+        <PropertyRef Name="Localidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_proveedor">
+    <End Role="Proveedores" Type="BrindarModel.Proveedores" Multiplicity="1" />
+    <End Role="Salones" Type="BrindarModel.Salones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="IdProveedor" />
+      </Principal>
+      <Dependent Role="Salones">
+        <PropertyRef Name="Proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_servicio_proveedor">
+    <End Role="Proveedores" Type="BrindarModel.Proveedores" Multiplicity="1" />
+    <End Role="Servicios" Type="BrindarModel.Servicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="IdProveedor" />
+      </Principal>
+      <Dependent Role="Servicios">
+        <PropertyRef Name="Proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_suscripcion_proveedor">
+    <End Role="Proveedores" Type="BrindarModel.Proveedores" Multiplicity="1" />
+    <End Role="Suscripciones" Type="BrindarModel.Suscripciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="IdProveedor" />
+      </Principal>
+      <Dependent Role="Suscripciones">
+        <PropertyRef Name="Proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventoProveedores">
+    <End Role="Eventos" Type="BrindarModel.Eventos" Multiplicity="*" />
+    <End Role="Proveedores" Type="BrindarModel.Proveedores" Multiplicity="*" />
+  </Association>
+</Schema>

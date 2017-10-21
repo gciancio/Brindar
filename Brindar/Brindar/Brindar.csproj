@@ -318,6 +318,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Brindar.DAL\Brindar.DAL.csproj">
+      <Project>{3da24afe-a8a5-4b90-93ed-26bd5e78b693}</Project>
+      <Name>Brindar.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brindar.Logica\Brindar.Logica.csproj">
+      <Project>{0e45b9dc-af26-4e15-9fab-ae9fa5738293}</Project>
+      <Name>Brindar.Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
