@@ -35,15 +35,15 @@ namespace Brindar.DAL.Repositorio
         }
 
         //Validar login
-        public bool ValidarLogin(Usuarios o)
+        public int ValidarLogin(Usuarios o)
         {
             var usuario = ctx.Usuarios.Where(org => org.Email == o.Email && org.Password == o.Password).ToList();
-            if (usuario.Count() == 0 || usuario.Count() > 1)
+            if (usuario.Count() != 1)
             {
-                return false;
+                return 0;
             }
 
-            return true;
+            return 1;
         }
 
         //Activar/desactivar proveedor premium

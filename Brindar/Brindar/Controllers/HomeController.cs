@@ -26,6 +26,8 @@ namespace Brindar.Controllers
             return View("CrearServicio");
         }
 
+        
+
         [HttpPost]
         public ActionResult Registracion(Usuarios o)
         {

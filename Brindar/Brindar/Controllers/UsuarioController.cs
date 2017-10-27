@@ -11,29 +11,25 @@ namespace Brindar.Controllers
 {
     public class UsuarioController : Controller
     {
-        public ActionResult login()
+        public ActionResult Login()
         {
-            ViewBag.Url = Session["url"];
-
-            return View();
+            return View("Login");
         }
 
-
         [HttpPost]
-        public ActionResult login(Usuarios u)
+        public ActionResult Login(Usuarios u)
         {
-            string url = String.IsNullOrEmpty((string)Session["Url"]) ? "/Home" : (string)Session["Url"];
             Usuarios usr = new Usuarios();
             UsuariosDALImple usrMng = new UsuariosDALImple();
-            usr.Nombre = u.Nombre;
+            usr.Email = u.Email;
             usr.Password = u.Password;
-            if (!ModelState.IsValid || !usrMng.ValidarLogin(usr))
+            if (usrMng.ValidarLogin(usr)==0)
             {
                 TempData["Mensaje"] = "Usuario / Contraseña invalida";
-                return RedirectToAction("login", "Usuario");
+                return RedirectToAction("Login", "Usuario");
             }
             Session["logeado"] = true;
-            return Redirect(url);
+            return RedirectToAction("CrearServicio", "Home");
         }
     }
 }

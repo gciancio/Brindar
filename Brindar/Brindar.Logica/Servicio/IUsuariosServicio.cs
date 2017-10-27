@@ -14,7 +14,7 @@ namespace Brindar.Logica.Servicio
         //Saber si el organizador/proveedor ya está registrado
         bool ExisteMailRegistrado(string Email);
         //Validar login
-        bool ValidarLogin(Usuarios o);
+        int ValidarLogin(Usuarios o);
         //Activar/desactivar premium
         void ProveedorPremium(int IdUsuario, bool Premium);
     }
