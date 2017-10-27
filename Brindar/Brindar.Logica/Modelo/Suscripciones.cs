@@ -15,11 +15,11 @@ namespace Brindar.Logica.Modelo
     public partial class Suscripciones
     {
         public int IdSuscripcion { get; set; }
-        public int Proveedor { get; set; }
+        public int Usuario { get; set; }
         public System.DateTime FechaInicio { get; set; }
         public int CantMeses { get; set; }
         public double PrecioMensual { get; set; }
     
-        public virtual Proveedores Proveedores { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
     }
 }

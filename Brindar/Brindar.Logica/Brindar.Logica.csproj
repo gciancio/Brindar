@@ -11,6 +11,8 @@
     <AssemblyName>Brindar.Logica</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,16 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Servicio\ICategoriasServicio.cs" />
-    <Compile Include="Servicio\IEventosServicio.cs" />
-    <Compile Include="Servicio\ILocalidadesServicio.cs" />
-    <Compile Include="Servicio\IOrganizadoresServicio.cs" />
-    <Compile Include="Servicio\IProveedoresServicio.cs" />
-    <Compile Include="Servicio\IProvinciasServicio.cs" />
-    <Compile Include="Servicio\ISalonesServicio.cs" />
-    <Compile Include="Servicio\IServiciosServicio.cs" />
-    <Compile Include="Servicio\ISuscripcionesServicio.cs" />
-    <Compile Include="Servicio\ITiposEventoServicio.cs" />
     <Compile Include="Modelo\BrindarDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -63,16 +55,13 @@
     <Compile Include="Modelo\Categorias.cs">
       <DependentUpon>BrindarDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\EventoProveedores.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Eventos.cs">
       <DependentUpon>BrindarDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Localidades.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelo\Organizadores.cs">
-      <DependentUpon>BrindarDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelo\Proveedores.cs">
       <DependentUpon>BrindarDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Provincias.cs">
@@ -90,6 +79,21 @@
     <Compile Include="Modelo\TiposEvento.cs">
       <DependentUpon>BrindarDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\TiposUsuario.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Usuarios.cs">
+      <DependentUpon>BrindarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Servicio\ICategoriasServicio.cs" />
+    <Compile Include="Servicio\IEventosServicio.cs" />
+    <Compile Include="Servicio\ILocalidadesServicio.cs" />
+    <Compile Include="Servicio\IUsuariosServicio.cs" />
+    <Compile Include="Servicio\IProvinciasServicio.cs" />
+    <Compile Include="Servicio\ISalonesServicio.cs" />
+    <Compile Include="Servicio\IServiciosServicio.cs" />
+    <Compile Include="Servicio\ISuscripcionesServicio.cs" />
+    <Compile Include="Servicio\ITiposEventoServicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -105,6 +109,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

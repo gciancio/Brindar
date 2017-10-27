@@ -4,28 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b31963cc13e5494a96d77bb85b5159cd" Name="Diagrama1">
-        <EntityTypeShape EntityType="BrindarModel.Categorias" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BrindarModel.Eventos" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BrindarModel.Localidades" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="BrindarModel.Organizadores" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BrindarModel.Proveedores" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="BrindarModel.Provincias" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BrindarModel.Salones" Width="1.5" PointX="9.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BrindarModel.Servicios" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BrindarModel.Suscripciones" Width="1.5" PointX="9.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BrindarModel.TiposEvento" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+      <Diagram DiagramId="156e850e317b452ab1edecaa529a1608" Name="Diagrama1">
+        <EntityTypeShape EntityType="BrindarModel.Categorias" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrindarModel.EventoProveedores" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrindarModel.Eventos" Width="1.5" PointX="10.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrindarModel.Localidades" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrindarModel.Provincias" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrindarModel.Salones" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrindarModel.Servicios" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrindarModel.Suscripciones" Width="1.5" PointX="7.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrindarModel.TiposEvento" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrindarModel.TiposUsuario" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrindarModel.Usuarios" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
         <AssociationConnector Association="BrindarModel.FK_categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="BrindarModel.FK_evento" ManuallyRouted="false" />
+        <AssociationConnector Association="BrindarModel.FK_proveedor_evento" ManuallyRouted="false" />
         <AssociationConnector Association="BrindarModel.FK_organizador" ManuallyRouted="false" />
         <AssociationConnector Association="BrindarModel.FK_salon" ManuallyRouted="false" />
         <AssociationConnector Association="BrindarModel.FK_tipoEvento" ManuallyRouted="false" />
-        <AssociationConnector Association="BrindarModel.FK_localidad" ManuallyRouted="false" />
+        <AssociationConnector Association="BrindarModel.FK_localidad_usuario" ManuallyRouted="false" />
         <AssociationConnector Association="BrindarModel.FK_provincia" ManuallyRouted="false" />
         <AssociationConnector Association="BrindarModel.FK_salon_localidad" ManuallyRouted="false" />
-        <AssociationConnector Association="BrindarModel.FK_proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="BrindarModel.FK_salon_proveedor" ManuallyRouted="false" />
         <AssociationConnector Association="BrindarModel.FK_servicio_proveedor" ManuallyRouted="false" />
-        <AssociationConnector Association="BrindarModel.FK_suscripcion_proveedor" ManuallyRouted="false" />
-        <AssociationConnector Association="BrindarModel.EventoProveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="BrindarModel.FK_suscripcion_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BrindarModel.FK_tipoUsuario" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

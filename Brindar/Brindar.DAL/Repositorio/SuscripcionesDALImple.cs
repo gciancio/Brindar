@@ -22,7 +22,7 @@ namespace Brindar.DAL.Repositorio
         //Traer suscripciones por proveedor
         public List<Suscripciones> TraerSuscripcionesPorProveedor(int IdProveedor)
         {
-            List<Suscripciones> SuscripcionesPorProveedor = ctx.Suscripciones.Where(s => s.Proveedor == IdProveedor).ToList();
+            List<Suscripciones> SuscripcionesPorProveedor = ctx.Suscripciones.Where(s => s.Usuario == IdProveedor).ToList();
             return SuscripcionesPorProveedor;
         }
     }

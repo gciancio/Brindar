@@ -1,11 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brindar", "Brindar\Brindar.csproj", "{5DE5EE88-2DFA-4CF8-B413-672EEC8AB5AC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brindar.Logica", "Brindar.Logica\Brindar.Logica.csproj", "{0E45B9DC-AF26-4E15-9FAB-AE9FA5738293}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brindar.DAL", "Brindar.DAL\Brindar.DAL.csproj", "{3DA24AFE-A8A5-4B90-93ED-26BD5E78B693}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0AC67FD1-98DE-4561-9345-803866645CD3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brindar", "Brindar\Brindar.csproj", "{5DE5EE88-2DFA-4CF8-B413-672EEC8AB5AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +20,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5DE5EE88-2DFA-4CF8-B413-672EEC8AB5AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DE5EE88-2DFA-4CF8-B413-672EEC8AB5AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DE5EE88-2DFA-4CF8-B413-672EEC8AB5AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DE5EE88-2DFA-4CF8-B413-672EEC8AB5AC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E45B9DC-AF26-4E15-9FAB-AE9FA5738293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E45B9DC-AF26-4E15-9FAB-AE9FA5738293}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E45B9DC-AF26-4E15-9FAB-AE9FA5738293}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -25,6 +28,10 @@ Global
 		{3DA24AFE-A8A5-4B90-93ED-26BD5E78B693}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DA24AFE-A8A5-4B90-93ED-26BD5E78B693}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DA24AFE-A8A5-4B90-93ED-26BD5E78B693}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DE5EE88-2DFA-4CF8-B413-672EEC8AB5AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DE5EE88-2DFA-4CF8-B413-672EEC8AB5AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DE5EE88-2DFA-4CF8-B413-672EEC8AB5AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE5EE88-2DFA-4CF8-B413-672EEC8AB5AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,12 +19,13 @@ namespace Brindar.Logica.Modelo
         public string Nombre { get; set; }
         public double Precio { get; set; }
         public string Telefono { get; set; }
+        public int Provincia { get; set; }
         public int Localidad { get; set; }
         public string Direccion { get; set; }
         public string URLFacebook { get; set; }
         public string URLPagina { get; set; }
     
         public virtual Localidades Localidades { get; set; }
-        public virtual Proveedores Proveedores { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
     }
 }

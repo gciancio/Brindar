@@ -16,15 +16,15 @@ namespace Brindar.Logica.Modelo
     {
         public Localidades()
         {
-            this.Proveedores = new HashSet<Proveedores>();
+            this.Usuarios = new HashSet<Usuarios>();
             this.Salones = new HashSet<Salones>();
         }
     
         public int IdLocalidad { get; set; }
-        public string Descripcion { get; set; }
         public int IdProvincia { get; set; }
+        public string Descripcion { get; set; }
     
-        public virtual ICollection<Proveedores> Proveedores { get; set; }
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
         public virtual Provincias Provincias { get; set; }
         public virtual ICollection<Salones> Salones { get; set; }
     }

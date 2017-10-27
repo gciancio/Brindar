@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Brindar.DAL.Repositorio;
+using Brindar.Logica.Modelo;
+using Brindar.Logica.Servicio;
 
 namespace Brindar.Controllers
 {
     public class HomeController : Controller
     {
+        UsuariosDALImple usrMng = new UsuariosDALImple();
+
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
@@ -15,18 +20,20 @@ namespace Brindar.Controllers
             return View();
         }
 
-        public ActionResult About()
+        // GET: /Home/CrearServicio
+        public ActionResult CrearServicio()
         {
-            ViewBag.Message = "Your app description page.";
-
-            return View();
+            return View("CrearServicio");
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Registracion(Usuarios o)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+            if (ModelState.IsValid)
+            {
+                usrMng.RegistrarUsuario(o);
+            }
+            return RedirectToAction("Index", "Home");
+        }  
     }
 }

@@ -16,7 +16,7 @@ namespace Brindar.Logica.Modelo
     {
         public Eventos()
         {
-            this.Proveedores = new HashSet<Proveedores>();
+            this.EventoProveedores = new HashSet<EventoProveedores>();
         }
     
         public int IdEvento { get; set; }
@@ -27,9 +27,9 @@ namespace Brindar.Logica.Modelo
         public System.DateTime Fecha { get; set; }
         public double Presupuesto { get; set; }
     
-        public virtual Organizadores Organizadores { get; set; }
+        public virtual ICollection<EventoProveedores> EventoProveedores { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
         public virtual Servicios Servicios { get; set; }
         public virtual TiposEvento TiposEvento { get; set; }
-        public virtual ICollection<Proveedores> Proveedores { get; set; }
     }
 }

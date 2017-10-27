@@ -9,6 +9,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="EventoProveedores">
+      <EntityTypeMapping TypeName="BrindarModel.EventoProveedores">
+        <MappingFragment StoreEntitySet="EventoProveedores">
+          <ScalarProperty Name="Evento" ColumnName="Evento" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Eventos">
       <EntityTypeMapping TypeName="BrindarModel.Eventos">
         <MappingFragment StoreEntitySet="Eventos">
@@ -26,38 +35,8 @@
       <EntityTypeMapping TypeName="BrindarModel.Localidades">
         <MappingFragment StoreEntitySet="Localidades">
           <ScalarProperty Name="IdLocalidad" ColumnName="IdLocalidad" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Organizadores">
-      <EntityTypeMapping TypeName="BrindarModel.Organizadores">
-        <MappingFragment StoreEntitySet="Organizadores">
-          <ScalarProperty Name="IdOrganizador" ColumnName="IdOrganizador" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Proveedores">
-      <EntityTypeMapping TypeName="BrindarModel.Proveedores">
-        <MappingFragment StoreEntitySet="Proveedores">
-          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Localidad" ColumnName="Localidad" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="URLFacebook" ColumnName="URLFacebook" />
-          <ScalarProperty Name="URLPagina" ColumnName="URLPagina" />
-          <ScalarProperty Name="Premium" ColumnName="Premium" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -77,6 +56,7 @@
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Precio" ColumnName="Precio" />
           <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
           <ScalarProperty Name="Localidad" ColumnName="Localidad" />
           <ScalarProperty Name="Direccion" ColumnName="Direccion" />
           <ScalarProperty Name="URLFacebook" ColumnName="URLFacebook" />
@@ -98,7 +78,7 @@
       <EntityTypeMapping TypeName="BrindarModel.Suscripciones">
         <MappingFragment StoreEntitySet="Suscripciones">
           <ScalarProperty Name="IdSuscripcion" ColumnName="IdSuscripcion" />
-          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
           <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
           <ScalarProperty Name="CantMeses" ColumnName="CantMeses" />
           <ScalarProperty Name="PrecioMensual" ColumnName="PrecioMensual" />
@@ -113,13 +93,34 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="EventoProveedores" TypeName="BrindarModel.EventoProveedores" StoreEntitySet="EventoProveedores">
-      <EndProperty Name="Eventos">
-        <ScalarProperty Name="IdEvento" ColumnName="Evento" />
-      </EndProperty>
-      <EndProperty Name="Proveedores">
-        <ScalarProperty Name="IdProveedor" ColumnName="Proveedor" />
-      </EndProperty>
-    </AssociationSetMapping>
+    <EntitySetMapping Name="TiposUsuario">
+      <EntityTypeMapping TypeName="BrindarModel.TiposUsuario">
+        <MappingFragment StoreEntitySet="TiposUsuario">
+          <ScalarProperty Name="IdTipoUsuario" ColumnName="IdTipoUsuario" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="BrindarModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="URLFacebook" ColumnName="URLFacebook" />
+          <ScalarProperty Name="URLPagina" ColumnName="URLPagina" />
+          <ScalarProperty Name="OrgPremium" ColumnName="OrgPremium" />
+          <ScalarProperty Name="ProPremium" ColumnName="ProPremium" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

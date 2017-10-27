@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Brindar.Logica.Servicio;
+using Brindar.Logica.Modelo;
+
+namespace Brindar.DAL.Repositorio
+{
+    public class UsuariosDALImple : IUsuariosServicio
+    {
+        BrindarEntities ctx = new BrindarEntities();
+
+        //Registro organizador
+        public void RegistrarUsuario(Usuarios o)
+        {
+            ctx.Usuarios.Add(o);
+            ctx.SaveChanges();
+        }
+
+        //Saber si el organizador/proveedor ya está registrado
+        public bool ExisteMailRegistrado(string Email)
+        {
+            int existe = ctx.Usuarios.Where(o => o.Email == Email).Count();
+
+            if (existe > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //Validar login
+        public bool ValidarLogin(Usuarios o)
+        {
+            var usuario = ctx.Usuarios.Where(org => org.Email == o.Email && org.Password == o.Password).ToList();
+            if (usuario.Count() == 0 || usuario.Count() > 1)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        //Activar/desactivar proveedor premium
+        public void ProveedorPremium(int IdUsuario, bool Premium)
+        {
+            var ServicioPremium = ctx.Usuarios.Find(IdUsuario);
+            ServicioPremium.ProPremium = Premium;
+            ctx.SaveChanges();
+        }
+    }
+}

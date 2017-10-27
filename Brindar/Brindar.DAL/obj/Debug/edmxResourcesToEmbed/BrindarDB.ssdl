@@ -5,13 +5,13 @@
     <EntitySet Name="EventoProveedores" EntityType="BrindarModel.Store.EventoProveedores" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Eventos" EntityType="BrindarModel.Store.Eventos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Localidades" EntityType="BrindarModel.Store.Localidades" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Organizadores" EntityType="BrindarModel.Store.Organizadores" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Proveedores" EntityType="BrindarModel.Store.Proveedores" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Provincias" EntityType="BrindarModel.Store.Provincias" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Salones" EntityType="BrindarModel.Store.Salones" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Servicios" EntityType="BrindarModel.Store.Servicios" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Suscripciones" EntityType="BrindarModel.Store.Suscripciones" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TiposEvento" EntityType="BrindarModel.Store.TiposEvento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TiposUsuario" EntityType="BrindarModel.Store.TiposUsuario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="BrindarModel.Store.Usuarios" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_categoria" Association="BrindarModel.Store.FK_categoria">
       <End Role="Categorias" EntitySet="Categorias" />
       <End Role="Servicios" EntitySet="Servicios" />
@@ -20,20 +20,16 @@
       <End Role="Eventos" EntitySet="Eventos" />
       <End Role="EventoProveedores" EntitySet="EventoProveedores" />
     </AssociationSet>
-    <AssociationSet Name="FK_localidad" Association="BrindarModel.Store.FK_localidad">
+    <AssociationSet Name="FK_localidad_usuario" Association="BrindarModel.Store.FK_localidad_usuario">
       <End Role="Localidades" EntitySet="Localidades" />
-      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
     <AssociationSet Name="FK_organizador" Association="BrindarModel.Store.FK_organizador">
-      <End Role="Organizadores" EntitySet="Organizadores" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Eventos" EntitySet="Eventos" />
     </AssociationSet>
-    <AssociationSet Name="FK_proveedor" Association="BrindarModel.Store.FK_proveedor">
-      <End Role="Proveedores" EntitySet="Proveedores" />
-      <End Role="Salones" EntitySet="Salones" />
-    </AssociationSet>
     <AssociationSet Name="FK_proveedor_evento" Association="BrindarModel.Store.FK_proveedor_evento">
-      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="EventoProveedores" EntitySet="EventoProveedores" />
     </AssociationSet>
     <AssociationSet Name="FK_provincia" Association="BrindarModel.Store.FK_provincia">
@@ -48,17 +44,25 @@
       <End Role="Localidades" EntitySet="Localidades" />
       <End Role="Salones" EntitySet="Salones" />
     </AssociationSet>
+    <AssociationSet Name="FK_salon_proveedor" Association="BrindarModel.Store.FK_salon_proveedor">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Salones" EntitySet="Salones" />
+    </AssociationSet>
     <AssociationSet Name="FK_servicio_proveedor" Association="BrindarModel.Store.FK_servicio_proveedor">
-      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Servicios" EntitySet="Servicios" />
     </AssociationSet>
-    <AssociationSet Name="FK_suscripcion_proveedor" Association="BrindarModel.Store.FK_suscripcion_proveedor">
-      <End Role="Proveedores" EntitySet="Proveedores" />
+    <AssociationSet Name="FK_suscripcion_usuario" Association="BrindarModel.Store.FK_suscripcion_usuario">
+      <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Suscripciones" EntitySet="Suscripciones" />
     </AssociationSet>
     <AssociationSet Name="FK_tipoEvento" Association="BrindarModel.Store.FK_tipoEvento">
       <End Role="TiposEvento" EntitySet="TiposEvento" />
       <End Role="Eventos" EntitySet="Eventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tipoUsuario" Association="BrindarModel.Store.FK_tipoUsuario">
+      <End Role="TiposUsuario" EntitySet="TiposUsuario" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Categorias">
@@ -75,6 +79,7 @@
     </Key>
     <Property Name="Evento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Proveedor" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
   </EntityType>
   <EntityType Name="Eventos">
     <Key>
@@ -93,36 +98,8 @@
       <PropertyRef Name="IdLocalidad" />
     </Key>
     <Property Name="IdLocalidad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="IdProvincia" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Organizadores">
-    <Key>
-      <PropertyRef Name="IdOrganizador" />
-    </Key>
-    <Property Name="IdOrganizador" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="30" />
-    <Property Name="Apellido" Type="varchar" Nullable="false" MaxLength="30" />
-    <Property Name="FechaNacimiento" Type="date" Nullable="false" />
-    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Contraseña" Type="varchar" Nullable="false" MaxLength="30" />
-  </EntityType>
-  <EntityType Name="Proveedores">
-    <Key>
-      <PropertyRef Name="IdProveedor" />
-    </Key>
-    <Property Name="IdProveedor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="30" />
-    <Property Name="Apellido" Type="varchar" Nullable="false" MaxLength="30" />
-    <Property Name="FechaNacimiento" Type="date" Nullable="false" />
-    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Contraseña" Type="varchar" Nullable="false" MaxLength="30" />
-    <Property Name="Telefono" Type="varchar" Nullable="false" MaxLength="30" />
-    <Property Name="Localidad" Type="int" Nullable="false" />
-    <Property Name="Direccion" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="URLFacebook" Type="varchar" MaxLength="100" />
-    <Property Name="URLPagina" Type="varchar" MaxLength="100" />
-    <Property Name="Premium" Type="bit" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="Provincias">
     <Key>
@@ -140,6 +117,7 @@
     <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="30" />
     <Property Name="Precio" Type="float" Nullable="false" />
     <Property Name="Telefono" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="Provincia" Type="int" Nullable="false" />
     <Property Name="Localidad" Type="int" Nullable="false" />
     <Property Name="Direccion" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="URLFacebook" Type="varchar" MaxLength="100" />
@@ -159,7 +137,7 @@
       <PropertyRef Name="IdSuscripcion" />
     </Key>
     <Property Name="IdSuscripcion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Proveedor" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="int" Nullable="false" />
     <Property Name="FechaInicio" Type="date" Nullable="false" />
     <Property Name="CantMeses" Type="int" Nullable="false" />
     <Property Name="PrecioMensual" Type="float" Nullable="false" />
@@ -170,6 +148,33 @@
     </Key>
     <Property Name="IdTipoEvento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TiposUsuario">
+    <Key>
+      <PropertyRef Name="IdTipoUsuario" />
+    </Key>
+    <Property Name="IdTipoUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TipoUsuario" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="Apellido" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="Telefono" Type="varchar" MaxLength="30" />
+    <Property Name="Provincia" Type="int" />
+    <Property Name="Localidad" Type="int" />
+    <Property Name="Direccion" Type="varchar" MaxLength="50" />
+    <Property Name="URLFacebook" Type="varchar" MaxLength="100" />
+    <Property Name="URLPagina" Type="varchar" MaxLength="100" />
+    <Property Name="OrgPremium" Type="bit" />
+    <Property Name="ProPremium" Type="bit" />
   </EntityType>
   <Association Name="FK_categoria">
     <End Role="Categorias" Type="BrindarModel.Store.Categorias" Multiplicity="1" />
@@ -195,48 +200,36 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_localidad">
-    <End Role="Localidades" Type="BrindarModel.Store.Localidades" Multiplicity="1" />
-    <End Role="Proveedores" Type="BrindarModel.Store.Proveedores" Multiplicity="*" />
+  <Association Name="FK_localidad_usuario">
+    <End Role="Localidades" Type="BrindarModel.Store.Localidades" Multiplicity="0..1" />
+    <End Role="Usuarios" Type="BrindarModel.Store.Usuarios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Localidades">
         <PropertyRef Name="IdLocalidad" />
       </Principal>
-      <Dependent Role="Proveedores">
+      <Dependent Role="Usuarios">
         <PropertyRef Name="Localidad" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_organizador">
-    <End Role="Organizadores" Type="BrindarModel.Store.Organizadores" Multiplicity="1" />
+    <End Role="Usuarios" Type="BrindarModel.Store.Usuarios" Multiplicity="1" />
     <End Role="Eventos" Type="BrindarModel.Store.Eventos" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Organizadores">
-        <PropertyRef Name="IdOrganizador" />
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
       </Principal>
       <Dependent Role="Eventos">
         <PropertyRef Name="Organizador" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_proveedor">
-    <End Role="Proveedores" Type="BrindarModel.Store.Proveedores" Multiplicity="1" />
-    <End Role="Salones" Type="BrindarModel.Store.Salones" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Proveedores">
-        <PropertyRef Name="IdProveedor" />
-      </Principal>
-      <Dependent Role="Salones">
-        <PropertyRef Name="Proveedor" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_proveedor_evento">
-    <End Role="Proveedores" Type="BrindarModel.Store.Proveedores" Multiplicity="1" />
+    <End Role="Usuarios" Type="BrindarModel.Store.Usuarios" Multiplicity="1" />
     <End Role="EventoProveedores" Type="BrindarModel.Store.EventoProveedores" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Proveedores">
-        <PropertyRef Name="IdProveedor" />
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
       </Principal>
       <Dependent Role="EventoProveedores">
         <PropertyRef Name="Proveedor" />
@@ -279,27 +272,39 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_salon_proveedor">
+    <End Role="Usuarios" Type="BrindarModel.Store.Usuarios" Multiplicity="1" />
+    <End Role="Salones" Type="BrindarModel.Store.Salones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Salones">
+        <PropertyRef Name="Proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_servicio_proveedor">
-    <End Role="Proveedores" Type="BrindarModel.Store.Proveedores" Multiplicity="1" />
+    <End Role="Usuarios" Type="BrindarModel.Store.Usuarios" Multiplicity="1" />
     <End Role="Servicios" Type="BrindarModel.Store.Servicios" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Proveedores">
-        <PropertyRef Name="IdProveedor" />
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
       </Principal>
       <Dependent Role="Servicios">
         <PropertyRef Name="Proveedor" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_suscripcion_proveedor">
-    <End Role="Proveedores" Type="BrindarModel.Store.Proveedores" Multiplicity="1" />
+  <Association Name="FK_suscripcion_usuario">
+    <End Role="Usuarios" Type="BrindarModel.Store.Usuarios" Multiplicity="1" />
     <End Role="Suscripciones" Type="BrindarModel.Store.Suscripciones" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Proveedores">
-        <PropertyRef Name="IdProveedor" />
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUsuario" />
       </Principal>
       <Dependent Role="Suscripciones">
-        <PropertyRef Name="Proveedor" />
+        <PropertyRef Name="Usuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -312,6 +317,18 @@
       </Principal>
       <Dependent Role="Eventos">
         <PropertyRef Name="TipoEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tipoUsuario">
+    <End Role="TiposUsuario" Type="BrindarModel.Store.TiposUsuario" Multiplicity="1" />
+    <End Role="Usuarios" Type="BrindarModel.Store.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposUsuario">
+        <PropertyRef Name="IdTipoUsuario" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="TipoUsuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

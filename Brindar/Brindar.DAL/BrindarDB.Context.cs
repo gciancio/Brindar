@@ -27,14 +27,15 @@ namespace Brindar.DAL
         }
     
         public DbSet<Categorias> Categorias { get; set; }
+        public DbSet<EventoProveedores> EventoProveedores { get; set; }
         public DbSet<Eventos> Eventos { get; set; }
         public DbSet<Localidades> Localidades { get; set; }
-        public DbSet<Organizadores> Organizadores { get; set; }
-        public DbSet<Proveedores> Proveedores { get; set; }
         public DbSet<Provincias> Provincias { get; set; }
         public DbSet<Salones> Salones { get; set; }
         public DbSet<Servicios> Servicios { get; set; }
         public DbSet<Suscripciones> Suscripciones { get; set; }
         public DbSet<TiposEvento> TiposEvento { get; set; }
+        public DbSet<TiposUsuario> TiposUsuario { get; set; }
+        public DbSet<Usuarios> Usuarios { get; set; }
     }
 }

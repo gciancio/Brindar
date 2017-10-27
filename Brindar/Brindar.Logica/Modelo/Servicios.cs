@@ -26,6 +26,6 @@ namespace Brindar.Logica.Modelo
     
         public virtual Categorias Categorias { get; set; }
         public virtual ICollection<Eventos> Eventos { get; set; }
-        public virtual Proveedores Proveedores { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
     }
 }
