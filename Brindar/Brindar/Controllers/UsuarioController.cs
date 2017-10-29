@@ -15,6 +15,18 @@ namespace Brindar.Controllers
         UsuariosDALImple usrMng = new UsuariosDALImple();
         ServiciosDALImple serMng = new ServiciosDALImple();
 
+        // GET: /Home/RegistrarUsuario
+        public ActionResult RegistrarUsuarios()
+        {
+            return View("RegistrarUsuarios");
+        }
+
+        [HttpPost]
+        public ActionResult RegistrarUsuarios(Usuarios o)
+        {
+            usrMng.RegistrarUsuario(o);
+            return RedirectToAction("Index", "Home");
+        }
 
         // GET: /Home/Login
         public ActionResult Login()

@@ -11,6 +11,9 @@
         <li>@Html.ActionLink("Login", "Login", "Usuario", routeValues: null, htmlAttributes: new { id = "loginUsuarioLink" })</li>
         <li>@Html.ActionLink("Servicios", "Servicios", "Usuario", routeValues: null, htmlAttributes: new { id = "serviciosLink" })</li>
         <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <!--ini ref DMC 20171027 - se agrega link de Registracion en la HOME-->
+        <li>@Html.ActionLink("Registracion", "RegistrarUsuarios", "Usuario", routeValues: null, htmlAttributes: new { id = "registrarUsuarioLink" })</li>
+        <!--fin ref DMC 20171027-->
         <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
