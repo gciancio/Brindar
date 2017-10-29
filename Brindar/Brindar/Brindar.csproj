@@ -201,6 +201,7 @@
     <Compile Include="Models\TiposEvento.cs" />
     <Compile Include="Models\TiposUsuario.cs" />
     <Compile Include="Models\Usuarios.cs" />
+    <Compile Include="Models\VariablesDeSesion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -303,8 +304,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Home\CrearServicio.cshtml" />
     <Content Include="Views\Usuario\Login.cshtml" />
+    <Content Include="Views\Usuario\AltaServicio.cshtml" />
+    <Content Include="Views\Usuario\Servicios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

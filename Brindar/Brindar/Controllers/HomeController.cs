@@ -20,14 +20,6 @@ namespace Brindar.Controllers
             return View();
         }
 
-        // GET: /Home/CrearServicio
-        public ActionResult CrearServicio()
-        {
-            return View("CrearServicio");
-        }
-
-        
-
         [HttpPost]
         public ActionResult Registracion(Usuarios o)
         {

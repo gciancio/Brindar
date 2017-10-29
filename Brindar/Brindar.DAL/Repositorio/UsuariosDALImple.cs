@@ -53,5 +53,12 @@ namespace Brindar.DAL.Repositorio
             ServicioPremium.ProPremium = Premium;
             ctx.SaveChanges();
         }
+
+        //Obtener Rol
+        public Usuarios ObtenerRolUsuario(int IdUsuario)
+        {
+            var rol = ctx.Usuarios.Where(u => u.IdUsuario == IdUsuario).First();
+            return rol;
+        }
     }
 }

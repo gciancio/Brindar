@@ -17,5 +17,7 @@ namespace Brindar.Logica.Servicio
         int ValidarLogin(Usuarios o);
         //Activar/desactivar premium
         void ProveedorPremium(int IdUsuario, bool Premium);
+        //Obtener Rol
+        Usuarios ObtenerRolUsuario(int IdUsuario);
     }
 }

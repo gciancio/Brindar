@@ -1,0 +1,35 @@
+﻿@model Brindar.Models.Servicios
+
+@{
+    ViewBag.Title = "Alta de Servicio";
+    List<Brindar.Logica.Modelo.Categorias> categorias = ViewBag.categorias;
+}
+
+<div class="container" id="mainContainer">
+    <div class="form-block col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <h3>@ViewBag.Title</h3>
+        <form action="/Usuario/AltaServicios" method="Post" enctype="multipart/form-data">
+            <br />
+            @Html.ValidationSummary(true, "")
+            <div class="form-group">
+                @Html.DropDownListFor(x => x.Categoria, new SelectList(categorias, "IdCategoria", "Descripcion"), "Seleccione una Categoría")
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(x => x.Categoria, "")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Precio)
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.Precio)
+                    @Html.ValidationMessageFor(x => x.Precio, "")
+                </div>
+            </div>
+
+
+            <div class="text-center">
+                <input type="submit" value="Crear Servicio" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>

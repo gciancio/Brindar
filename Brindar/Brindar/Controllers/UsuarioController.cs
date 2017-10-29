@@ -11,25 +11,83 @@ namespace Brindar.Controllers
 {
     public class UsuarioController : Controller
     {
+        CategoriasDALImple catMng = new CategoriasDALImple();
+        UsuariosDALImple usrMng = new UsuariosDALImple();
+        ServiciosDALImple serMng = new ServiciosDALImple();
+
+
+        // GET: /Home/Login
         public ActionResult Login()
         {
-            return View("Login");
+            ViewBag.Url = Session["url"];
+
+            return View();
         }
 
+        // POST: /Home/Login
         [HttpPost]
         public ActionResult Login(Usuarios u)
         {
+            string url = String.IsNullOrEmpty((string)Session["Url"]) ? "/Home" : (string)Session["Url"];
             Usuarios usr = new Usuarios();
-            UsuariosDALImple usrMng = new UsuariosDALImple();
             usr.Email = u.Email;
             usr.Password = u.Password;
-            if (usrMng.ValidarLogin(usr)==0)
+            if (!ModelState.IsValid || usrMng.ValidarLogin(usr) == 0)
             {
-                TempData["Mensaje"] = "Usuario / Contraseña invalida";
+                TempData["Mensaje"] = "Usuario y/o Contraseña invalida";
                 return RedirectToAction("Login", "Usuario");
             }
             Session["logeado"] = true;
-            return RedirectToAction("CrearServicio", "Home");
+            return Redirect(url);
         }
+
+        // GET: /Home/Servicios
+        public ActionResult Servicios()
+        {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+            
+            //List<Servicios> servicios = serMng.TraerServiciosPorProveedor();
+            //ViewBag.servicios = servicios;
+            return View();
+        }
+
+        // GET: /Home/AltaServicio
+        public ActionResult AltaServicio()
+        {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+            List<Categorias> categorias = catMng.TraerCategorias();
+            ViewBag.categorias = categorias;
+
+            return View();
+        }
+
+        // POST: /Home/AltaServicio
+        [HttpPost]
+        public ActionResult AltaServicios(Servicios s)
+        {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+            List<Categorias> categorias = catMng.TraerCategorias();
+            ViewBag.categorias = categorias;
+            Servicios servicio = new Servicios();
+            servicio.Proveedor = s.Proveedor;
+            servicio.Categoria = s.Categoria;
+            servicio.Precio = s.Precio;
+            serMng.RegistrarServicio(servicio);
+
+            return View("Index");
+        }
+        
     }
 }
