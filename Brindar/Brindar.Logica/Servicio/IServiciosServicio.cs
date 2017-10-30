@@ -15,6 +15,8 @@ namespace Brindar.Logica.Servicio
         void EditarServicio(int IdServicio, Servicios s);
         //Borrar un servicio
         void BorrarServicio(int IdServicio);
+        //Trae servicio por id
+        Servicios BuscarServicioPorId(int? id);
         //Trae lista de servicios
 		List<Servicios> TraerServicios();
 		//Traer lista de servicios por categoría

@@ -308,6 +308,7 @@
     <Content Include="Views\Usuario\AltaServicio.cshtml" />
     <Content Include="Views\Usuario\Servicios.cshtml" />
     <Content Include="Views\Usuario\AltaSalon.cshtml" />
+    <Content Include="Views\Usuario\EditarServicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -105,6 +105,33 @@ namespace Brindar.Controllers
             return View("Servicios");
         }
 
+        // GET: /Home/EditarServicio
+        public ActionResult EditarServicio(int? id)
+        {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+
+            List<Categorias> categorias = catMng.TraerCategorias();
+            ViewBag.categorias = categorias;
+            Servicios s = serMng.BuscarServicioPorId(id);
+            return View(s);
+        }
+
+        // POST: /Home/EditarServicio
+        [HttpPost]
+        public ActionResult EditarServicio(int id, Servicios s)
+        {
+            s.IdServicio = id;
+            List<Categorias> categorias = catMng.TraerCategorias();
+            ViewBag.categorias = categorias;
+            serMng.EditarServicio(s.IdServicio,s);
+
+            return View("Servicios");
+        }
+
         // GET: /Home/AltaSalon
         public ActionResult AltaSalon()
         {

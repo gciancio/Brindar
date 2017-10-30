@@ -43,6 +43,12 @@ namespace Brindar.DAL.Repositorio
             return servicios;
         }
 
+        //Trae servicio por id
+        public Servicios BuscarServicioPorId(int? id)
+        {
+            return ctx.Servicios.Find(id);
+        }
+
         //Traer lista de servicios por categoría
         public List<Servicios> TraerServiciosPorCategoria(int IdCategoria)
         {

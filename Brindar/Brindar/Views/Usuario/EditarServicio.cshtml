@@ -1,0 +1,39 @@
+﻿@model Brindar.Logica.Modelo.Servicios
+@{
+    ViewBag.Title = "EditarServicio";
+    List<Brindar.Logica.Modelo.Categorias> categorias = ViewBag.categorias;
+}
+
+<div class="row">
+    <div class="col s12 m10 offset-m1">
+        <div class="row">
+            <h5 class="center-align">Editar pelicula</h5>
+        </div>
+
+        <form action="/Usuario/EditarServicio?id=@Model.IdServicio" method="Post" enctype="multipart/form-data">
+            <<div class="row">
+                <div class="input-field">
+                    <select name="Categoria" class="browser-default">
+                        <option  value="Categoria" disabled selected>Seleccione la Categoría</option>
+                        @foreach (var c in categorias)
+                        {
+                            <option  value="@c.IdCategoria">@c.Descripcion</option>
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(x => x.Categoria)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    @Html.LabelFor(x => x.Precio)
+                    @Html.TextBoxFor(x => x.Precio)
+                    @Html.ValidationMessageFor(x => x.Precio)
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Guardar Cambios" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
