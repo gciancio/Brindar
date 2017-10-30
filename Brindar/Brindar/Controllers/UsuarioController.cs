@@ -22,7 +22,11 @@ namespace Brindar.Controllers
         // GET: /Home/RegistrarUsuario
         public ActionResult RegistrarUsuarios()
         {
-            return View("RegistrarUsuarios");
+            List<Provincias> provincias = proMng.TraerProvincias();
+            ViewBag.provincias = provincias;
+            List<Localidades> localidades = locMng.TraerLocalidades();
+            ViewBag.localidades = localidades;
+            return View();
         }
 
         [HttpPost]

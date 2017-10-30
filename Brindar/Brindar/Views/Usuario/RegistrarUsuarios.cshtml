@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Registracion";
+    List<Brindar.Logica.Modelo.Provincias> provincias = ViewBag.provincias;	
+    List<Brindar.Logica.Modelo.Localidades> localidades = ViewBag.localidades;
 }
 
 <hgroup class="title">
@@ -46,11 +48,23 @@
                     <input id="Telefono" type="text" name="Telefono" class="form-control input-lg" placeholder="Telefono" />
                 </div>
                 <br>
+                <!-- INPUT PROVINCIA -->
+				@Html.ValidationSummary(true, "")
+				<div class="form-group">
+					@Html.DropDownListFor(y => y.Provincia, new SelectList(provincias, "IdProvincia", "Descripcion"), "Seleccione una provincia")
+					<div class="col-md-10">
+						@Html.ValidationMessageFor(y => y.Provincia, "")
+					</div>
+				</div>
+                <br>				
                 <!-- INPUT LOCALIDAD -->
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input id="Localidad" type="text" name="Localidad" class="form-control input-lg" placeholder="Localidad" />
-                </div>
+				@Html.ValidationSummary(true, "")
+				<div class="form-group">
+					@Html.DropDownListFor(x => x.Localidad, new SelectList(localidades, "IdProvincia", "Descripcion"), "Seleccione una localidad")
+					<div class="col-md-10">
+						@Html.ValidationMessageFor(x => x.Localidad, "")
+					</div>
+				</div>
                 <br>
                 <!-- INPUT DIRECCION -->
                 <div class="input-group">
