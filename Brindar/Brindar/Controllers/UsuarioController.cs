@@ -50,6 +50,8 @@ namespace Brindar.Controllers
                 return RedirectToAction("Login", "Usuario");
             }
             Session["logeado"] = true;
+            Models.GlobalVar.IdUsuario = usrMng.ObtenerIdUsuario(usr.Email);
+            Models.GlobalVar.Nombre = usr.Nombre;
             return Redirect(url);
         }
 
@@ -90,15 +92,14 @@ namespace Brindar.Controllers
                 Session["url"] = Request.Url.AbsoluteUri;
                 return RedirectToAction("login", "Usuario");
             }
-            List<Categorias> categorias = catMng.TraerCategorias();
-            ViewBag.categorias = categorias;
+            
             Servicios servicio = new Servicios();
-            servicio.Proveedor = s.Proveedor;
+            servicio.Proveedor = Models.GlobalVar.IdUsuario;
             servicio.Categoria = s.Categoria;
             servicio.Precio = s.Precio;
             serMng.RegistrarServicio(servicio);
 
-            return View("Index");
+            return View("Servicios");
         }
         
     }

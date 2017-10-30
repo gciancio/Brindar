@@ -60,5 +60,13 @@ namespace Brindar.DAL.Repositorio
             var rol = ctx.Usuarios.Where(u => u.IdUsuario == IdUsuario).First();
             return rol;
         }
+
+        //Obtener id de usuario
+        public int ObtenerIdUsuario(string Email)
+        {
+            var Usuario = ctx.Usuarios.Where(u => u.Email == Email).First();
+            int IdUsuario = Usuario.IdUsuario;
+            return IdUsuario;
+        }
     }
 }

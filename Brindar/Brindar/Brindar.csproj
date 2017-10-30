@@ -193,6 +193,7 @@
     <Compile Include="Models\Categorias.cs" />
     <Compile Include="Models\EventoProveedores.cs" />
     <Compile Include="Models\Eventos.cs" />
+    <Compile Include="Models\GlobalVar.cs" />
     <Compile Include="Models\Localidades.cs" />
     <Compile Include="Models\Provincias.cs" />
     <Compile Include="Models\Salones.cs" />
@@ -201,7 +202,6 @@
     <Compile Include="Models\TiposEvento.cs" />
     <Compile Include="Models\TiposUsuario.cs" />
     <Compile Include="Models\Usuarios.cs" />
-    <Compile Include="Models\VariablesDeSesion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

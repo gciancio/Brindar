@@ -19,5 +19,7 @@ namespace Brindar.Logica.Servicio
         void ProveedorPremium(int IdUsuario, bool Premium);
         //Obtener Rol
         Usuarios ObtenerRolUsuario(int IdUsuario);
+        //Obtener id de usuario
+        int ObtenerIdUsuario(string Email);
     }
 }
