@@ -13,7 +13,7 @@ namespace Brindar.DAL.Repositorio
         BrindarEntities ctx = new BrindarEntities();
 
         //Traer lista de provincias
-        public List<Provincias> TraerLocalidades()
+        public List<Provincias> TraerProvincias()
         {
             List<Provincias> provincias = ctx.Provincias.ToList();
             return provincias;

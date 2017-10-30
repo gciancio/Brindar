@@ -1,0 +1,77 @@
+﻿@model Brindar.Models.Salones
+
+@{
+    ViewBag.Title = "Alta de Salon";
+    List<Brindar.Logica.Modelo.Localidades> localidades = ViewBag.localidades;
+    List<Brindar.Logica.Modelo.Provincias> provincias = ViewBag.provincias;
+}
+
+<div class="container" id="mainContainer">
+    <div class="form-block col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <h3>@ViewBag.Title</h3>
+        <form action="/Usuario/AltaSalon" method="Post" enctype="multipart/form-data">
+            <br />
+            @Html.ValidationSummary(true, "")
+            <div class="form-group">
+                @Html.LabelFor(x => x.Nombre)
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.Nombre)
+                    @Html.ValidationMessageFor(x => x.Nombre, "")
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Precio)
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.Precio)
+                    @Html.ValidationMessageFor(x => x.Precio, "")
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Telefono)
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.Telefono)
+                    @Html.ValidationMessageFor(x => x.Telefono, "")
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(x => x.Provincia, new SelectList(provincias, "IdProvincia", "Descripcion"), "Seleccione una Provincia")
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(x => x.Provincia, "")
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(x => x.Localidad, new SelectList(localidades, "IdLocalidad", "Descripcion"), "Seleccione una Localidad")
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(x => x.Localidad, "")
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Direccion)
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.Direccion)
+                    @Html.ValidationMessageFor(x => x.Direccion, "")
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.URLFacebook)
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.URLFacebook)
+                    @Html.ValidationMessageFor(x => x.URLFacebook, "")
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.URLPagina)
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.URLPagina)
+                    @Html.ValidationMessageFor(x => x.URLPagina, "")
+                </div>
+            </div>
+
+
+            <div class="text-center">
+                <input type="submit" value="Crear Salon" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+

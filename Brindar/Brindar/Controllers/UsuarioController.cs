@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Dynamic;
 using Brindar.DAL.Repositorio;
 using Brindar.Logica.Modelo;
 using Brindar.Logica.Servicio;
@@ -14,6 +15,9 @@ namespace Brindar.Controllers
         CategoriasDALImple catMng = new CategoriasDALImple();
         UsuariosDALImple usrMng = new UsuariosDALImple();
         ServiciosDALImple serMng = new ServiciosDALImple();
+        ProvinciasDALImple proMng = new ProvinciasDALImple();
+        LocalidadesDALImple locMng = new LocalidadesDALImple();
+        SalonesDALImple salMng = new SalonesDALImple();
 
         // GET: /Home/RegistrarUsuario
         public ActionResult RegistrarUsuarios()
@@ -63,10 +67,9 @@ namespace Brindar.Controllers
                 Session["url"] = Request.Url.AbsoluteUri;
                 return RedirectToAction("login", "Usuario");
             }
-            
-            //List<Servicios> servicios = serMng.TraerServiciosPorProveedor();
-            //ViewBag.servicios = servicios;
-            return View();
+
+            List<Servicios> servicios = serMng.TraerServiciosPorProveedor(Models.GlobalVar.IdUsuario);
+            return View(servicios);
         }
 
         // GET: /Home/AltaServicio
@@ -98,6 +101,47 @@ namespace Brindar.Controllers
             servicio.Categoria = s.Categoria;
             servicio.Precio = s.Precio;
             serMng.RegistrarServicio(servicio);
+
+            return View("Servicios");
+        }
+
+        // GET: /Home/AltaSalon
+        public ActionResult AltaSalon()
+        {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+            List<Provincias> provincias = proMng.TraerProvincias();
+            ViewBag.provincias = provincias;
+            List<Localidades> localidades = locMng.TraerLocalidades();
+            ViewBag.localidades = localidades;
+
+            return View();
+        }
+
+        // POST: /Home/AltaSalon
+        [HttpPost]
+        public ActionResult AltaSalon(Salones s)
+        {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+
+            Salones salon = new Salones();
+            salon.Proveedor = Models.GlobalVar.IdUsuario;
+            salon.Nombre = s.Nombre;
+            salon.Precio = s.Precio;
+            salon.Telefono = s.Telefono;
+            salon.Provincia = s.Provincia;
+            salon.Localidad = s.Localidad;
+            salon.Direccion = s.Direccion;
+            salon.URLFacebook = s.URLFacebook;
+            salon.URLPagina = s.URLPagina;
+            salMng.RegistrarSalon(salon);
 
             return View("Servicios");
         }

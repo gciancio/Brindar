@@ -1,12 +1,41 @@
-﻿@model Brindar.Models.Servicios
+﻿@model IEnumerable<Brindar.Logica.Modelo.Servicios>
 
 @{
-    ViewBag.Title = "Servicios";
-    List<Brindar.Logica.Modelo.Servicios> servicios = ViewBag.servicios;
+   ViewBag.Title = "Servicios";
 }
 
 <h2>Servicios</h2>
 
 <div class="row">
-    <a class="btn btn-floating btn-large pulse right blue darken-2" href="/Usuario/AltaServicio"><i class="material-icons">add</i></a>
+    <a class="btn btn-floating btn-large pulse right blue darken-2" href="/Usuario/AltaServicio"><i class="material-icons">+ Nuevo Servicio</i></a>
+</div>
+
+<table class="highlight">
+    <tr>
+        <th>Numero</th>
+        <th>Categoria</th>
+        <th>precio</th>
+    </tr>
+    @foreach (var s in Model)
+        {
+        <tr>
+            <td>
+                @s.IdServicio
+            </td>
+            <td>
+                @s.Categorias.Descripcion
+            </td>
+            <td>
+                @s.Precio
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "editar", new { id = s.IdServicio })
+            </td>
+        </tr>
+        }
+</table>
+
+
+<div class="row">
+    <a class="btn btn-floating btn-large pulse right blue darken-2" href="/Usuario/AltaSalon"><i class="material-icons">+ Nuevo Salon</i></a>
 </div>
