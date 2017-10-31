@@ -106,7 +106,7 @@ namespace Brindar.Controllers
             servicio.Precio = s.Precio;
             serMng.RegistrarServicio(servicio);
 
-            return View("Servicios");
+            return RedirectToAction("Servicios", "Usuario");
         }
 
         // GET: /Home/EditarServicio
@@ -128,12 +128,31 @@ namespace Brindar.Controllers
         [HttpPost]
         public ActionResult EditarServicio(int id, Servicios s)
         {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+
             s.IdServicio = id;
             List<Categorias> categorias = catMng.TraerCategorias();
             ViewBag.categorias = categorias;
             serMng.EditarServicio(s.IdServicio,s);
 
-            return View("Servicios");
+            return RedirectToAction("Servicios", "Usuario");
+        }
+
+        // POST: /Home/EliminarServicio
+        public ActionResult EliminarServicio(int id)
+        {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+
+            serMng.BorrarServicio(id);
+            return RedirectToAction("Servicios", "Usuario");
         }
 
         // GET: /Home/AltaSalon
@@ -144,6 +163,7 @@ namespace Brindar.Controllers
                 Session["url"] = Request.Url.AbsoluteUri;
                 return RedirectToAction("login", "Usuario");
             }
+
             List<Provincias> provincias = proMng.TraerProvincias();
             ViewBag.provincias = provincias;
             List<Localidades> localidades = locMng.TraerLocalidades();

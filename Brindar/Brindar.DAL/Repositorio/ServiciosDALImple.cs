@@ -31,8 +31,9 @@ namespace Brindar.DAL.Repositorio
         //Borrar un servicio
         public void BorrarServicio(int IdServicio)
         {
-            var serv = ctx.Servicios.Find(IdServicio);
-            ctx.Servicios.Remove(serv);
+            //var serv = ctx.Servicios.Find(IdServicio);
+            Servicios servicio = ctx.Servicios.Where(s => s.IdServicio == IdServicio).FirstOrDefault();
+            ctx.Servicios.Remove(servicio);
             ctx.SaveChanges();
         }
 

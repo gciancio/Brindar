@@ -29,7 +29,9 @@
                 @s.Precio
             </td>
             <td>
-                @Html.ActionLink("Editar", "EditarServicio", new { id = s.IdServicio })
+                <a href="/Usuario/EditarServicio?id=@s.IdServicio">Editar</a>
+                <a class="red-text darken-1 borrar" href="/Usuario/EliminarServicio?id=@s.IdServicio">Eliminar</a>
+                
             </td>
         </tr>
         }
