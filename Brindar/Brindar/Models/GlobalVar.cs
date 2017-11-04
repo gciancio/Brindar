@@ -9,5 +9,6 @@ namespace Brindar.Models
     {
         public static int IdUsuario;
         public static string Nombre;
+        public static string TipoUsuario;
     }
 }

@@ -17,9 +17,11 @@ namespace Brindar.Logica.Servicio
         int ValidarLogin(Usuarios o);
         //Activar/desactivar premium
         void ProveedorPremium(int IdUsuario, bool Premium);
-        //Obtener Rol
-        Usuarios ObtenerRolUsuario(int IdUsuario);
         //Obtener id de usuario
         int ObtenerIdUsuario(string Email);
+        //Obtener datos del usuario
+        Usuarios ObtenerDatosUsuario(string Email);
+        //Obtener tipo de usuario
+        string ObtenerTipoUsuario(int IdTipoUsuario);
     }
 }

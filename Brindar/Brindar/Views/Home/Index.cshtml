@@ -1,45 +1,55 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@if (ViewBag.TipoUser == "Administrador")
+{
+    <li class="hidden-xs"><i class="fa text-primary"></i><a href="#" class="text-uppercase">Panel administración</a></li>
+    <li class="hidden-xs"><i class="fa text-primary"></i><a href="~/Usuario/Desconectarse" class="text-uppercase">Cerrar sesión</a></li>
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-            <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
-            </p>
+else if (ViewBag.TipoUser == "Organizador")
+{
+    <li class="hidden-xs"><i class="fa text-primary"></i><a href="#" class="text-uppercase">Eventos actuales</a></li>
+    <li class="hidden-xs"><i class="fa text-primary"></i><a href="#" class="text-uppercase">Eventos organizados</a></li>
+    <li class="hidden-xs"><i class="fa text-primary"></i><a href="~/Usuario/Desconectarse" class="text-uppercase">Cerrar sesión</a></li>
+
+}
+else if (ViewBag.TipoUser == "Proveedor")
+{
+ <div class="hero" id="highlighted">
+    <div class="inner">
+        <div class="row">
+            <div class="text-center">
+                <h2 class="h1 text-weight-light text-center">
+                    Bienvenidos a <span class="text-primary">Brindar</span>
+                </h2>
+                <li class="hidden-xs"><i class="fa text-primary"></i><a href="#" class="text-uppercase btn btn-more btn-lg i-right">Crear servicio<i class="fa fa-play"></i></a></li>
+                <li class="hidden-xs"><i class="fa text-primary"></i><a href="#" class="text-uppercase btn btn-more btn-lg i-right">Editar servicio<i class="fa fa-play"></i></a></li>
+                <li class="hidden-xs"><i class="fa text-primary"></i><a href="~/Usuario/Desconectarse" class="text-uppercase btn btn-more btn-lg i-right">Cerrar Sesión<i class="fa fa-play"></i></a></li>
+            </div>
+            <div class="col-md-6 col-md-pull-6 hidden-xs">
+            </div>
+        
         </div>
-    </section>
+    </div>
+</div>
+    
 }
-<h3>We suggest the following:</h3>
-<ol class="round">
-    <li class="one">
-        <h5>Getting Started</h5>
-        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-        enables a clean separation of concerns and that gives you full control over markup
-        for enjoyable, agile development. ASP.NET MVC includes many features that enable
-        fast, TDD-friendly development for creating sophisticated applications that use
-        the latest web standards.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
-    </li>
-
-    <li class="two">
-        <h5>Add NuGet packages and jump-start your coding</h5>
-        NuGet makes it easy to install and update free libraries and tools.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
-    </li>
-
-    <li class="three">
-        <h5>Find Web Hosting</h5>
-        You can easily find a web hosting company that offers the right mix of features
-        and price for your applications.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
-    </li>
-</ol>
+else
+{
+<div class="hero" id="highlighted">
+    <div class="inner">
+        <div class="row">
+            <div class="col-md-6 col-md-push-6 item-caption">
+                <h2 class="h1 text-weight-light">
+                    Bienvenidos a <span class="text-primary">Brindar</span>
+                </h2>
+                <h4>
+                    Aplicación para la organización de diversos tipos de eventos. Todo al alcance de la mano en un mismo lugar.
+                </h4>
+                <p></p>
+                <a href="#" class="btn btn-more btn-lg i-right">Crear evento <i class="fa fa-play"></i></a>
+            </div>
+            <div class="col-md-6 col-md-pull-6 hidden-xs">
+                <img src="~/img/home.png" alt="Brindar" class="center-block img-responsive">
+            </div>
+        </div>
+    </div>
+</div>
+}

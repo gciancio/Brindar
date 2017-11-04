@@ -15,11 +15,13 @@ namespace Brindar.Logica.Servicio
         void EditarSalon(int IdSalon, Salones s);
         //Borrar un salon
         void BorrarSalon(int IdSalon);
+        //Trae servicio por id
+        Salones BuscarSalonPorId(int? id);
         //Trae lista de todos los salones disponibles
         List<Salones> TraerSalones();
         //Trae lista de salones por id de localidad
         List<Salones> TraerSalonesPorLocalidad(int IdLocalidad);
         //Trae salón por id del proveedor
-        Salones TraerSalonPorProveedor(int IdProveedor);
+        List<Salones> TraerSalonPorProveedor(int IdProveedor);
     }
 }

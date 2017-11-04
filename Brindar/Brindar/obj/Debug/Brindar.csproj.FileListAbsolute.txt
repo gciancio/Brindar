@@ -1,6 +1,8 @@
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.dll
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.pdb
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Antlr3.Runtime.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.DAL.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.Logica.dll
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\DotNetOpenAuth.AspNet.dll
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\DotNetOpenAuth.Core.dll
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\DotNetOpenAuth.OAuth.Consumer.dll
@@ -26,6 +28,8 @@ C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\System.Web.WebPa
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\WebGrease.dll
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\WebMatrix.Data.dll
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\WebMatrix.WebData.dll
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.DAL.pdb
+C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.Logica.pdb
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\EntityFramework.xml
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Newtonsoft.Json.xml
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\System.Web.Helpers.xml
@@ -89,7 +93,3 @@ C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\zh-Hant\System.S
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\obj\Debug\Brindar.csprojResolveAssemblyReference.cache
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\obj\Debug\Brindar.dll
 C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\obj\Debug\Brindar.pdb
-C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.DAL.dll
-C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.Logica.dll
-C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.DAL.pdb
-C:\Users\gonza\Desktop\Facultad\TPI\Brindar\Brindar\Brindar\bin\Brindar.Logica.pdb

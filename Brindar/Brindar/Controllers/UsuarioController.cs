@@ -58,8 +58,14 @@ namespace Brindar.Controllers
                 return RedirectToAction("Login", "Usuario");
             }
             Session["logeado"] = true;
-            Models.GlobalVar.IdUsuario = usrMng.ObtenerIdUsuario(usr.Email);
-            Models.GlobalVar.Nombre = usr.Nombre;
+
+            Usuarios datos = new Usuarios();
+            datos = usrMng.ObtenerDatosUsuario(usr.Email);
+            int IdTipo = datos.TipoUsuario;
+
+            Models.GlobalVar.IdUsuario = datos.IdUsuario;
+            Models.GlobalVar.Nombre = datos.Nombre;
+            Models.GlobalVar.TipoUsuario = usrMng.ObtenerTipoUsuario(IdTipo);
             return Redirect(url);
         }
 
@@ -71,9 +77,11 @@ namespace Brindar.Controllers
                 Session["url"] = Request.Url.AbsoluteUri;
                 return RedirectToAction("login", "Usuario");
             }
-
-            List<Servicios> servicios = serMng.TraerServiciosPorProveedor(Models.GlobalVar.IdUsuario);
-            return View(servicios);
+            ViewData["Servicios"] = serMng.TraerServiciosPorProveedor(Models.GlobalVar.IdUsuario);
+            ViewData["Salones"] = salMng.TraerSalonPorProveedor(Models.GlobalVar.IdUsuario);
+            //List<Servicios> servicios = serMng.TraerServiciosPorProveedor(Models.GlobalVar.IdUsuario);
+            //List<Salones> salones = salMng.TraerSalonPorProveedor(Models.GlobalVar.IdUsuario);
+            return View();
         }
 
         // GET: /Home/AltaServicio
@@ -86,6 +94,8 @@ namespace Brindar.Controllers
             }
             List<Categorias> categorias = catMng.TraerCategorias();
             ViewBag.categorias = categorias;
+
+            ViewBag.TipoUser = Models.GlobalVar.TipoUsuario;
 
             return View();
         }
@@ -194,7 +204,66 @@ namespace Brindar.Controllers
             salon.URLPagina = s.URLPagina;
             salMng.RegistrarSalon(salon);
 
-            return View("Servicios");
+            return RedirectToAction("Servicios", "Usuario");
+        }
+
+        // GET: /Home/EditarSalon
+        public ActionResult EditarSalon(int? id)
+        {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+
+            List<Provincias> provincias = proMng.TraerProvincias();
+            ViewBag.provincias = provincias;
+            List<Localidades> localidades = locMng.TraerLocalidades();
+            ViewBag.localidades = localidades;
+            Salones s = salMng.BuscarSalonPorId(id);
+            return View(s);
+        }
+
+        // POST: /Home/EditarSalon
+        [HttpPost]
+        public ActionResult EditarSalon(int id, Salones s)
+        {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+
+            s.IdSalon = id;
+            List<Provincias> provincias = proMng.TraerProvincias();
+            ViewBag.provincias = provincias;
+            List<Localidades> localidades = locMng.TraerLocalidades();
+            ViewBag.localidades = localidades;
+            salMng.EditarSalon(s.IdSalon, s);
+
+            return RedirectToAction("Servicios", "Usuario");
+        }
+
+        // POST: /Home/EliminarSalon
+        public ActionResult EliminarSalon(int id)
+        {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+
+            salMng.BorrarSalon(id);
+            return RedirectToAction("Servicios", "Usuario");
+        }
+
+        public ActionResult Desconectarse()
+        {
+            Models.GlobalVar.IdUsuario = 0;
+            Models.GlobalVar.Nombre = null;
+            Models.GlobalVar.TipoUsuario = null;
+
+            return RedirectToAction("Index", "Home");
         }
         
     }

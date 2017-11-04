@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Brindar.Logica.Modelo.Servicios>
-
+﻿@using Brindar.Logica.Modelo;
 @{
-   ViewBag.Title = "Servicios";
+   List<Servicios> Servicios = ViewData["Servicios"] as List<Servicios>;
+   List<Salones> Salones = ViewData["Salones"] as List<Salones>;
 }
 
-<h2>Servicios</h2>
+<h1>Servicios</h1>
 
 <div class="row">
     <a class="btn btn-floating btn-large pulse right blue darken-2" href="/Usuario/AltaServicio"><i class="material-icons">+ Nuevo Servicio</i></a>
@@ -12,11 +12,11 @@
 
 <table class="highlight">
     <tr>
-        <th>Numero</th>
+        <th>Id</th>
         <th>Categoria</th>
         <th>precio</th>
     </tr>
-    @foreach (var s in Model)
+    @foreach (var s in Servicios)
         {
         <tr>
             <td>
@@ -37,7 +37,53 @@
         }
 </table>
 
-
+<h1>Salones</h1>
 <div class="row">
     <a class="btn btn-floating btn-large pulse right blue darken-2" href="/Usuario/AltaSalon"><i class="material-icons">+ Nuevo Salon</i></a>
 </div>
+
+<table class="highlight">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Telefono</th>
+        <th>Localidad</th>
+        <th>Dirección</th>
+        <th>Facebook</th>
+        <th>Página Web</th>
+    </tr>
+    @foreach (var sa in Salones)
+        {
+        <tr>
+            <td>
+                @sa.IdSalon
+            </td>
+            <td>
+                @sa.Nombre
+            </td>
+            <td>
+                @sa.Precio
+            </td>
+            <td>
+                @sa.Telefono
+            </td>
+            <td>
+                @sa.Localidades.Descripcion
+            </td>
+            <td>
+                @sa.Direccion
+            </td>
+            <td>
+                @sa.URLFacebook
+            </td>
+            <td>
+                @sa.URLPagina
+            </td>
+            <td>
+                <a href="/Usuario/EditarSalon?id=@sa.IdSalon">Editar</a>
+                <a class="red-text darken-1 borrar" href="/Usuario/EliminarSalon?id=@sa.IdSalon">Eliminar</a>
+            </td>
+        </tr>
+        }
+</table>

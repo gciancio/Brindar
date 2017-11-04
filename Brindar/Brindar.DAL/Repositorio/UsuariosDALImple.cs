@@ -54,19 +54,29 @@ namespace Brindar.DAL.Repositorio
             ctx.SaveChanges();
         }
 
-        //Obtener Rol
-        public Usuarios ObtenerRolUsuario(int IdUsuario)
-        {
-            var rol = ctx.Usuarios.Where(u => u.IdUsuario == IdUsuario).First();
-            return rol;
-        }
-
         //Obtener id de usuario
         public int ObtenerIdUsuario(string Email)
         {
             var Usuario = ctx.Usuarios.Where(u => u.Email == Email).First();
             int IdUsuario = Usuario.IdUsuario;
             return IdUsuario;
+        }
+
+        //Obtener datos del usuario
+        public Usuarios ObtenerDatosUsuario(string Email)
+        {
+            var Usuario = ctx.Usuarios.Where(u => u.Email == Email).First();
+
+            return Usuario;
+        }
+
+        //Obtener tipo de usuario
+        public string ObtenerTipoUsuario(int IdTipoUsuario)
+        {
+            var Usuario = ctx.TiposUsuario.Where(t => t.IdTipoUsuario == IdTipoUsuario).First();
+            string TipoUsuario = Usuario.Descripcion;
+
+            return TipoUsuario;
         }
     }
 }

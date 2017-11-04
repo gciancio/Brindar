@@ -36,9 +36,16 @@ namespace Brindar.DAL.Repositorio
         //Borrar un salon
         public void BorrarSalon(int IdSalon)
         {
-            var sal = ctx.Salones.Find(IdSalon);
-            ctx.Salones.Remove(sal);
+            //var sal = ctx.Salones.Find(IdSalon);
+            Salones salon = ctx.Salones.Where(s => s.IdSalon == IdSalon).FirstOrDefault();
+            ctx.Salones.Remove(salon);
             ctx.SaveChanges();
+        }
+
+        //Trae servicio por id
+        public Salones BuscarSalonPorId(int? id)
+        {
+            return ctx.Salones.Find(id);
         }
 
         //Trae lista de todos los salones disponibles
@@ -55,10 +62,11 @@ namespace Brindar.DAL.Repositorio
             return SalonesPorLocalidad;
         }
 
-        //Trae salón por id del proveedor
-        public Salones TraerSalonPorProveedor(int IdProveedor)
+        //Trae salón por proveedor
+        public List<Salones> TraerSalonPorProveedor(int IdProveedor)
         {
-            return ctx.Salones.Where(s => s.Proveedor == IdProveedor).FirstOrDefault();
+            List<Salones> SalonesPorProveedor = ctx.Salones.Where(s => s.Proveedor == IdProveedor).ToList();
+            return SalonesPorProveedor;
         }
     }
 }
