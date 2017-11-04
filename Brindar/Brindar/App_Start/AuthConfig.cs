@@ -22,9 +22,9 @@ namespace Brindar
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+            OAuthWebSecurity.RegisterFacebookClient(
+                appId: "923343394498919",
+                appSecret: "7c4e4baf85d9da4d0f00d9baf9c1720c");
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }
