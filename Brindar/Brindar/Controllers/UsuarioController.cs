@@ -265,6 +265,17 @@ namespace Brindar.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-        
+
+        public ActionResult CargarLocalidades(int idProvincia)
+        {
+            List<Localidades> localidades = locMng.TraerLocalidades();
+            ViewBag.localidades = localidades;
+            return Json(localidades.Where(l => l.IdProvincia == idProvincia).Select(l => new
+            {
+                IdLocalidad = l.IdLocalidad,
+                Descripcion = l.Descripcion
+            }).ToList(), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
