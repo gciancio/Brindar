@@ -36,6 +36,23 @@ namespace Brindar.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        // GET: /Home/RegistrarOrganizador
+        public ActionResult RegistrarOrganizador()
+        {
+            List<Provincias> provincias = proMng.TraerProvincias();
+            ViewBag.provincias = provincias;
+            List<Localidades> localidades = locMng.TraerLocalidades();
+            ViewBag.localidades = localidades;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RegistrarOrganizador(Usuarios o)
+        {
+            usrMng.RegistrarUsuario(o);
+            return RedirectToAction("Index", "Home");
+        }
+
         // GET: /Home/Login
         public ActionResult Login()
         {

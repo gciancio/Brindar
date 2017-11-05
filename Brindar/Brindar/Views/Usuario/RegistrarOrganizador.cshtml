@@ -1,0 +1,139 @@
+﻿@model Brindar.Models.Usuarios
+
+@{
+    ViewBag.Title = "Registracion";
+    List<Brindar.Logica.Modelo.Provincias> provincias = ViewBag.provincias;	
+    List<Brindar.Logica.Modelo.Localidades> localidades = ViewBag.localidades;
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+<div class="container">
+
+    <div class="panel-body">
+
+        <form action="/Usuario/RegistrarUsuarios" method="POST">
+            <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <!-- CABECERA -->
+                <h2 class="text-center">Registrar Organizador</h2>
+
+                <!-- INPUT TipoUsuario -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="TipoUsuario" type="hidden" value="2" name="TipoUsuario" class="form-control input-lg" placeholder="TipoUsuario" />
+                </div>
+                <br>
+                <!-- INPUT Nombre -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="Nombre" name="Nombre" type="text" class="form-control input-lg" placeholder="Nombre" />
+                </div>
+                <br>
+                <!-- INPUT Apellido -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="Apellido" name="Apellido" type="text" class="form-control input-lg" placeholder="Apellido" />
+                </div>
+                <br>
+                <!-- INPUT FechaNacimiento -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="FechaNacimiento" name="FechaNacimiento" type="text" class="form-control input-lg" placeholder="FechaNacimiento" />
+                </div>
+                <br>
+                <!-- INPUT TELEFONO -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="Telefono" type="text" name="Telefono" class="form-control input-lg" placeholder="Telefono" />
+                </div>
+                <br>
+                <!-- INPUT PROVINCIA -->
+                <div class="form-group">
+                    <select id="comboProvincias">
+                        <option value="-1">Seleccione Provincia</option>
+                        @foreach (var provincia in ViewBag.provincias)
+                        {
+                            <option value="@provincia.IdProvincia">@provincia.Descripcion</option>
+                        }
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <select id="comboLocalidades"></select>
+                </div>
+                <br>
+                <script src="../Scripts/jquery-1.8.2.min.js"></script>
+                <script type="text/javascript">
+					$(document).ready(function () {
+						$('#comboProvincias').on('change', function () {
+							var pcias = $('#comboProvincias option:selected').val();
+							//alert(pcias);
+							$.ajax({
+								type: 'GET',
+								data: { idProvincia : pcias},
+								url: '@Url.Action("CargarLocalidades", "Usuario")',
+								success: function(result){
+									//var localidades = JSON.parse(result);
+									//alert(localidades);
+								    var l = '<option value="-1">Seleccione localidad</option>';
+									for(var i = 0; i < result.length; i++){
+										l += '<option value="-1"' + result[i].IdLocalidad + '">' + result[i].Descripcion + '</option>';
+									}
+									$('#comboLocalidades').html(l);
+								}
+							});
+						});
+					});
+                </script>
+                <!-- INPUT DIRECCION -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="Direccion" type="text" name="Direccion" class="form-control input-lg" placeholder="Direccion" />
+                </div>
+                <br>
+                <!-- INPUT URLFacebook -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="URLFacebook" type="text" name="URLFacebook" class="form-control input-lg" placeholder="URLFacebook" />
+                </div>
+                <br>
+                <!-- INPUT URLPagina -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="URLPagina" type="text" name="URLPagina" class="form-control input-lg" placeholder="URLPagina" />
+                </div>
+                <br>
+                <!-- INPUT EMAIL -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="Email" type="text" name="Email" class="form-control input-lg" placeholder="Email" />
+                </div>
+                <br>				
+                <!-- INPUT CONTRASEÑA -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="Password" name="Password" type="password" class="form-control input-lg" placeholder="Contraseña" />
+                </div>
+                <br>
+                <div class="row">
+    <span>
+        @if (TempData["Mensaje"] != "")
+        {
+            @TempData["Mensaje"];
+        }
+
+    </span>
+</div>
+                <!-- BOTON INICIAR SESION -->
+                <div class="form-group">
+                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="INGRESAR" />
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <!-- Mensaje de validación -->
+    <span class="text-center">@TempData["Validacion"]</span>
+</div>    <!-- /container -->
