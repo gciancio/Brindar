@@ -50,7 +50,7 @@
                 <br>
                 <!-- INPUT PROVINCIA -->
                 <div class="form-group">
-                    <select id="comboProvincias">
+                    <select id="comboProvincias" class="form-control drop-lg">
                         <option value="-1">Seleccione Provincia</option>
                         @foreach (var provincia in ViewBag.provincias)
                         {
@@ -58,11 +58,13 @@
                         }
                     </select>
                 </div>
-                <br>
+                <!-- INPUT LOCALIDAD -->                
                 <div class="form-group">
-                    <select id="comboLocalidades"></select>
+                    <select id="comboLocalidades" class="form-control drop-lg">
+                        <option value="-1">Seleccione Localidad</option>
+                    </select>
                 </div>
-                <br>
+                
                 <script src="../Scripts/jquery-1.8.2.min.js"></script>
                 <script type="text/javascript">
 					$(document).ready(function () {
